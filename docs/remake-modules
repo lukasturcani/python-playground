@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+REPO_DIR=$(readlink -e "$0")
+REPO_DIR=${REPO_DIR%/*/*}
+
+rm -- "$REPO_DIR"/docs/source/{playground.*.rst,playground.rst}
+sphinx-apidoc \
+    -feEM \
+    -o "$REPO_DIR/docs/source" \
+    "$REPO_DIR/src/playground"
